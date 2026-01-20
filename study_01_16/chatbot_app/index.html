@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT-5-Nano 챗봇</title>
+    <style>
+        /* 디자인 설정 */
+        body { font-family: 'Pretendard', sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .chat-container { width: 450px; height: 700px; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; }
+        
+        .chat-header { background: #007bff; color: white; padding: 20px; text-align: center; font-weight: bold; font-size: 1.2rem; }
+
+        .chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #fafafa; }
+        
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 15px; font-size: 14px; line-height: 1.6; word-break: break-all; }
+        .user-message { align-self: flex-end; background-color: #007bff; color: white; border-bottom-right-radius: 2px; }
+        .bot-message { align-self: flex-start; background-color: #e9e9eb; color: #333; border-bottom-left-radius: 2px; }
+        .error-message { align-self: center; background-color: #ffeded; color: #ff4d4d; font-size: 12px; border-radius: 5px; }
+
+        .chat-input-area { border-top: 1px solid #eee; padding: 15px; display: flex; gap: 10px; background: white; }
+        input { flex: 1; border: 1px solid #ddd; padding: 12px; border-radius: 8px; outline: none; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">GPT-5-Nano AI</div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="message bot-message">안녕하세요! gpt-5-nano 모델과 연결되었습니다. 무엇을 도와드릴까요?</div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) sendMessage()">
+        <button onclick="sendMessage()" id="sendBtn">전송</button>
+    </div>
+</div>
+
+<script>
+    // ⚠️ 여기에 발급받으신 GMS API 키를 입력하세요.
+    const GMS_KEY = "S15P01Y109-a4eea64f-ccad-4313-b875-65694f3cf0a9"; 
+    const API_URL = "https://gms.ssafy.io/gmsapi/api.openai.com/v1/chat/completions";
+
+    async function sendMessage() {
+        const inputField = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const message = inputField.value.trim();
+        
+        if (message === "" || sendBtn.disabled) return;
+
+        // 1. 사용자 메시지 화면에 추가
+        addMessage(message, 'user-message');
+        inputField.value = "";
+        
+        // 입력창 및 버튼 비활성화 (응답 대기 중 중복 전송 방지)
+        sendBtn.disabled = true;
+        
+        // 2. 봇의 "생각 중..." 표시 추가
+        const loadingDiv = addMessage("답변을 생성 중입니다...", 'bot-message');
+
+        try {
+            // 3. API 호출
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${GMS_KEY}`
+                },
+                body: JSON.stringify({
+                    "model": "gpt-5-nano",
+                    "messages": [
+                        { "role": "developer", "content": "Answer in Korean. 친절하고 간결하게 대답해줘." },
+                        { "role": "user", "content": message }
+                    ]
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API 오류: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const aiResponse = data.choices[0].message.content;
+
+            // 4. "생각 중..." 메시지를 실제 AI 답변으로 교체
+            loadingDiv.textContent = aiResponse;
+
+        } catch (error) {
+            console.error("Error:", error);
+            loadingDiv.textContent = "오류가 발생했습니다. API 키나 네트워크 연결을 확인해주세요.";
+            loadingDiv.classList.add('error-message');
+        } finally {
+            sendBtn.disabled = false;
+            scrollToBottom();
+        }
+    }
+
+    function addMessage(text, className) {
+        const chatMessages = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', className);
+        messageDiv.textContent = text;
+        
+        chatMessages.appendChild(messageDiv);
+        scrollToBottom();
+        
+        return messageDiv; // 생성된 요소를 반환하여 나중에 텍스트 수정 가능하게 함
+    }
+
+    function scrollToBottom() {
+        const chatMessages = document.getElementById('chatMessages');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+</script>
+
+</body>
+</html>

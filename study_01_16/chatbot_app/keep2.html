@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>GPT-5-Nano Smart Chatbot</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --main-blue: #3a51e6; /* 로고의 블루 색상 */
+            --bg-color: #f0f2f5;
+            --bot-msg-bg: #ffffff;
+            --user-msg-bg: #3a51e6;
+        }
+
+        body { 
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; 
+            background-color: var(--bg-color); 
+            display: flex; justify-content: center; align-items: center; 
+            height: 100vh; margin: 0; 
+        }
+
+        .chat-container { 
+            width: 450px; height: 750px; 
+            background: white; border-radius: 24px; 
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12); 
+            display: flex; flex-direction: column; overflow: hidden; 
+        }
+
+        /* 헤더 디자인 */
+        .chat-header { 
+            background: var(--main-blue); color: white; 
+            padding: 25px; text-align: center; 
+            font-weight: 700; font-size: 1.2rem;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+        }
+        .header-logo { width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px; }
+
+        /* 메시지 영역 */
+        .chat-messages { 
+            flex: 1; padding: 20px; overflow-y: auto; 
+            display: flex; flex-direction: column; gap: 20px; 
+            background: #f8f9fa; 
+        }
+
+        /* 메시지 스타일 공통 */
+        .message-wrapper { display: flex; gap: 10px; max-width: 85%; }
+        .bot-wrapper { align-self: flex-start; }
+        .user-wrapper { align-self: flex-end; flex-direction: row-reverse; }
+
+        .avatar { 
+            width: 35px; height: 35px; border-radius: 50%; 
+            background: white; border: 1px solid #eee; flex-shrink: 0;
+            object-fit: contain;
+        }
+
+        .message { 
+            padding: 12px 16px; border-radius: 18px; 
+            font-size: 14.5px; line-height: 1.6; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-message { 
+            background-color: var(--user-msg-bg); color: white; 
+            border-bottom-right-radius: 4px; 
+        }
+        .bot-message { 
+            background-color: var(--bot-msg-bg); color: #333; 
+            border-bottom-left-radius: 4px; border: 1px solid #e9eaeb;
+        }
+
+        /* 마크다운 내부 스타일 */
+        .bot-message p { margin: 5px 0; }
+        .bot-message code { background: #f0f0f0; padding: 2px 4px; border-radius: 4px; font-family: monospace; }
+        .bot-message pre { background: #2d2d2d; color: #fff; padding: 12px; border-radius: 10px; overflow-x: auto; font-size: 13px; }
+
+        /* 입력 영역 */
+        .chat-input-area { 
+            padding: 20px; background: white; border-top: 1px solid #eee;
+            display: flex; gap: 10px; align-items: center;
+        }
+        input { 
+            flex: 1; border: 1px solid #e0e0e0; padding: 14px; 
+            border-radius: 12px; outline: none; transition: border 0.2s;
+            font-size: 14px;
+        }
+        input:focus { border-color: var(--main-blue); }
+        button { 
+            background: var(--main-blue); color: white; border: none; 
+            padding: 12px 18px; border-radius: 12px; cursor: pointer; 
+            font-weight: bold; transition: opacity 0.2s;
+        }
+        button:hover { opacity: 0.9; }
+        button:disabled { background: #ccc; }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">
+        <img src="image_05dac5.png" class="header-logo" alt="Logo">
+        GPT-5-Nano AI
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="message-wrapper bot-wrapper">
+            <img src="image_05dac5.png" class="avatar">
+            <div class="message bot-message">안녕하세요! 무엇을 도와드릴까요?</div>
+        </div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="메시지를 입력하세요..." onkeypress="if(event.keyCode==13) sendMessage()">
+        <button onclick="sendMessage()" id="sendBtn">전송</button>
+    </div>
+</div>
+
+<script>
+    let chatHistory = [{ "role": "developer", "content": "Answer in Korean. 마크다운 형식을 사용하여 깔끔하게 대답해줘." }];
+    const botAvatar = "C:\Users\SSAFY\Desktop\study_01.16\templates\botimage.png"; // 로봇 이미지 경로
+
+    async function sendMessage() {
+        const inputField = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const message = inputField.value.trim();
+        
+        if (message === "" || sendBtn.disabled) return;
+
+        // 사용자 메시지 추가
+        addMessage(message, 'user', false);
+        chatHistory.push({ "role": "user", "content": message });
+        inputField.value = "";
+        sendBtn.disabled = true;
+        
+        const loadingDiv = addMessage("생각 중...", 'bot', false);
+
+        try {
+            // 실제 환경에서는 /chat 경로가 설정되어 있어야 합니다.
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ "messages": chatHistory })
+            });
+
+            const data = await response.json();
+            const aiResponse = data.choices[0].message.content;
+
+            loadingDiv.innerHTML = marked.parse(aiResponse);
+            chatHistory.push({ "role": "assistant", "content": aiResponse });
+
+        } catch (error) {
+            loadingDiv.textContent = "서버 연결에 실패했습니다.";
+        } finally {
+            sendBtn.disabled = false;
+            scrollToBottom();
+        }
+    }
+
+    function addMessage(text, side, isMarkdown = false) {
+        const chatMessages = document.getElementById('chatMessages');
+        
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('message-wrapper', side === 'user' ? 'user-wrapper' : 'bot-wrapper');
+
+        // 봇일 경우 아바타 추가
+        if (side === 'bot') {
+            const img = document.createElement('img');
+            img.src = botAvatar;
+            img.classList.add('avatar');
+            wrapper.appendChild(img);
+        }
+
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', side === 'user' ? 'user-message' : 'bot-message');
+        
+        if (isMarkdown) {
+            messageDiv.innerHTML = marked.parse(text);
+        } else {
+            messageDiv.textContent = text;
+        }
+        
+        wrapper.appendChild(messageDiv);
+        chatMessages.appendChild(wrapper);
+        scrollToBottom();
+        return messageDiv;
+    }
+
+    function scrollToBottom() {
+        const chatMessages = document.getElementById('chatMessages');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+</script>
+</body>
+</html>
