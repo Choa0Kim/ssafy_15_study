@@ -1,24 +1,23 @@
-N = int(input())
+n = int(input())
 
-def recur(N, ans=""):
-    
-    # if에 탈출조건 설정
-    # 입력 값이 1, 또는 그 이하일 떄, 문자 1을 반환
+# 재귀함수
+def recur(n, ans=""):
 
-    if N <= 1:
-        return "1"  
+    # 탈출조건
+    # 입력값이 1 또는 0일때 문자 1 반환
+    if n <= 1:
+        return "1"
     
-    # 재귀 로직
-    # 짝수일때
-    if(N % 2 == 0):
-        # 기존 문자에서 0을 추가
-        ans = recur(N//2, ans) + "0"
+    # 재귀로직
+    # 짝수일때(2로 나눴을 때, 나머지가 0)
+    if (n%2== 0):
+        ans = recur(n//2, ans) + "0"
         return ans
     
-    # 홀수일때
+    # 홀수일떄
     else: 
-        # 기존 문자에서 1을 추가
-        ans = recur(N//2, ans) + "1"
+        ans = recur(n//2, ans) + "1"
         return ans
     
-print(recur(N))
+# 함수실행
+print(recur(n))
