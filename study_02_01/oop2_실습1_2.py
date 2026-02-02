@@ -15,30 +15,25 @@ class BaseModel:
         print('데이터를 저장합니다.')
 
 class Novel(BaseModel):
-    
+    # BaseModel의 초기화 함수 인자를 받아오고, autor라는 새로운 인자를 추가로 받음
     def __init__(self, data_type, title, content, created_at, updated_at, author):
-        super().__init__(self, data_type, title, content, created_at, updated_at)
+        super().__init__(data_type, title, content, created_at, updated_at)
         self.author = author
-        BaseModel.PK = 1
-        BaseModel.TYPE = 'Basic Model'
-
     
 class Other(BaseModel):
-    def __init__ (self,data_type, title, content, created_at, updated_at):
-        super().__init__(self,data_type, title, content, created_at, updated_at)
+    # 부모클래스의 클래스 변수 수정
+    TYPE = 'Othrt Model'
 
-    def Type_modify(self):
-        BaseModel.TYPE = 'Other Model'
+    
 
+    # 부모의 save 메서드의 내용을 무시하고 새로운 문구가 나와야 하는 상황에는
+    # super가 아니라 그냥 부모의 save를 호출하고 print문을 다시 작성
     def save(self):
-        print('데이터를 저장합니다.')
-
+        # super().save()
+        print('데이터를 다른 장소에 저장합니다.')
     
+    # BaseModel.TYPE = OtherModel
 
-    
-
-
-        
 
 hong = Novel('소설', '홍길동', '고전 소설', 1618, 1692, '허균')
 chun = Novel('소설', '춘향전', '고전 소설', 'unknown', 'unknown', '작자미상')
