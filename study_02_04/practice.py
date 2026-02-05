@@ -78,7 +78,6 @@ for y in range(sy, sy + 3): #출발지에서 출발지로부터 3칸
 print(total)
 
 
-# 
 
 
 
