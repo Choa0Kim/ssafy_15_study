@@ -24,7 +24,8 @@ for tc in range(1, T + 1):
         if arr[i] == target[target_idx]:
             target_idx += 1
 
-        if target_idx 
+        if target_idx:
+            pass 
 
 
     print(f'#{tc} {result}')    
