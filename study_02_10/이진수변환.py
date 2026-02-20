@@ -3,17 +3,19 @@
 #         return 
 #     # 짝수일때
 #     if num % 2 == 0:
-#         print("0")
-#         return recur(num//2)  # 2 로 나눈 몫을 전달
+#         # print("0")
+#         recur(num//2)  # 2 로 나눈 몫을 전달
+#         print("0", end='')
 #     # 홀수일때
 #     if num % 2== 1:
-#         print("1")
-#         return recur(num//2)
+#         # print("1")
+#         recur(num//2)
+#         print("1", end='')
     
 
 # N = int(input())
-# result = recur(N)
-# print(result)
+# recur(N)
+# # print(result)
 
 
 

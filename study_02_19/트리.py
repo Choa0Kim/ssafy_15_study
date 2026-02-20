@@ -1,9 +1,11 @@
+
 #1번패턴:중위
 #2번패턴:전위
 #3번패턴:후위
 
 import sys
 sys.stdin = open("input.txt", "r")
+
 #전위순회
 def recur(node):
     # 자식이 없다면 되돌아가기
@@ -23,7 +25,7 @@ def recur(node):
     recur(graph[node][1]) # 오른쪽 자식으로 이동
 
     # print(node, end=' ')##현재 노드를 출력(후위순회)
-    preorder.append(node)
+    postorder.append(node)
 
 T = int(input())
 
@@ -42,10 +44,10 @@ for tc in range(1, 1+T):
     inorder = []
     postorder = []
 
-    recur(1)
-    print(f'#{tc}')
-    print(*inorder)
-    print(*preorder)
-    print(*postorder)
-    # print(graph)  
+    # recur(1)
+    # print(f'#{tc}')
+    # print(*inorder)
+    # print(*preorder)
+    # print(*postorder)
+    print(graph)  
    
