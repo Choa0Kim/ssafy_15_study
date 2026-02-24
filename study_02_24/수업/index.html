@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초 HTML & CSS 연습</title>
+    <!-- 하나의 요소 -->
+    <!-- link 태그에 rel와 href  -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<!-- <head>영역: 현재 페이지를 설명/설정하는 메타데이터가 담겨있음. -->
+
+<body>
+    <!-- alt shft f: 자동정렬 -->
+    <!-- section 처럼 특수한 의미를 가진 태그가 따로 있음 -->
+    <h1>기초 HTML & CSS 연습</h1>
+    <section class="box">
+        <h2>1. 텍스트 요소</h2>
+        <p>일반 텍스트</p>
+        <p class="text-highlight">class 적용된 문장</p>
+        <p id="unique-highlight">id 적용된 문장</p>
+        <strong> strong 태그</strong>
+        <em>em 태그</em>
+        <small>samll 태그</small>
+    </section>
+
+    <!-- emmet 기능 :section.box>h2 -->
+    <section class=box>
+        <h2> 2. 링크 & 이미지</h2>
+        <!-- 태그: 해당 주소로 이동 
+         target="_blank": 새 창으로 이동 가능-->
+        <!-- a 태그는 한 줄을 차지하지 않음 -->
+        <a href="https://www.google.com" target="_blank">구글로 이동</a>
+        <br>
+        <!-- src: 이미지 주소 -->
+        <!-- alt: 이미지가 없을 때 출력될 값 -->
+        <img src="하치와레.webp" width="300" height="200" alt="이미지 없음">
+        <a href="https://www.google.com">
+            <img src="하치와레.webp" width="300" height="200" alt="이미지 없음">
+        </a>
+    </section>
+
+    <!-- action: 어느 서버로 전송할 것인가 -->
+    <form action="">
+    <section class="box">
+        <h2>3. Form 요소(사용자 입력)</h2>
+        <!-- label: 입력에 대한 설명 -->
+        <!-- input: 사용자 입력 -->
+        <!-- for랑 id를 세트로 같이 작성하가기 -->
+        <div>
+            <label for="username">ID: </label>
+            <input type="text" id="username">
+        </div>
+        <br>
+        
+        <div>
+            <label for="password">PW: </label>
+            <input type="text" id="password">
+        </div>
+
+        <br><br>
+
+        <input type="checkbox"> 동의하시겠습니까?
+
+        <br><br>
+        
+        <select>
+            <option>선택1</option>
+            <option>선택2</option>
+            <option>선택3</option>
+        </select>
+        <br><br>
+
+        <textarea row="5" cols="30"></textarea>
+
+        <br><br>
+
+        <button>제출</button>
+
+    </form>  
+
+    </section>
+
+    <section class="box">
+        <h2>4. 테이블 (표)</h2>
+        <!-- table: 표 -->
+        <!-- thead: 머리부분  /  tbody: 데이터 출력 부분 -->
+    <!-- tr: 한 줄 / th: head 부분 하나하나 / td: 데이터 하나하나 -->
+        <table>
+            <thead>
+                <tr>
+                    <td>이름</td>
+                    <td>직업</td>
+                    <td>취미</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- tr*2 -->
+                <tr>
+                    <td>하치와레</td>
+                    <td>백수</td>
+                    <td>사냥</td>
+                </tr>
+                <tr>
+                    <td>우사기</td>
+                    <td>백수</td>
+                    <td>사냥</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="box">
+        <h2>5. 우선순위 & 상속</h2>
+
+        <div>
+            <p class="my-text" id="my-text">무슨색깔일까요?</p>
+            <!-- id, clas, tag던 가장 가까운 것이 먼저 적용 -->
+            <!-- div p 자손 선택자 vs child class  -->
+        </div>
+
+        <div id="parent"> 
+            <p class="child">자식은 무슨 색깔일까요 ??</p>
+        </div>
+
+    </section>
+
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+
+</body>
+
+</html>

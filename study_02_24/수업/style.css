@@ -1,0 +1,143 @@
+/* - 우선순위는 같은 요소끼리만 비교한다  
+  - 부모와 자식은 경쟁하지 않는다.
+
+- 상속은 명시도 계산에 포함되지 않는다.
+  - 상속은 "직접 규칙이 없을 때만" 사용된다.
+
+- 직접 지정 > 상속  
+  - 직접 지정된 값이 있으면 상속값은 자동으로 밀린다. */
+
+/* css 선택자: 어느 요소에다가 디자인을 적용할 지 결정 */
+/* 3가지 
+    - 태그선택
+    - class 선택(.클래스명)
+    - id  선택(#id명)   */
+
+/*  !important :상속 다 무시하고 최우선 순위
+* {
+    color: red !important;
+} */
+ /*!important는 동일한 수준의 선택자 중에서 우선순위사 가장 높다.*/
+/* 
+div {
+    color: red !important;
+} */
+
+ /*1. 기본 설정 */
+body {
+    background-color: #f5f5f0;
+}
+
+.box {
+    background-color: white;
+    border: 3px solid #000;
+    /* padding-left: 20px;
+    padding-top:  5px;
+    padding-bottom: 20px;
+    padding-right: 20px; */
+    padding: 20px;
+    padding-top: 5px;
+    /* 상하좌우 한번에 20px 마진 적용 */
+    margin: 20px;
+}
+
+
+h1 {
+    color: darkblue;
+    /* tac+ enter(가운데 정렬) */
+    text-align: center;
+}
+
+.text-highlight {
+    color: red;
+}
+
+#unique-highlight {
+    color: blue;
+}
+
+/* 3. form 스타일 */
+/* input[type="text"]: input 태그인데, type 속성이 text인 요소에 적용 */
+
+input[type="text"] {
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+/*focus - 해당 요소 클릭시  */
+
+input:focus {
+    border-color: blue;
+    outline: none;
+}
+/* hover- 마우스를 위로 올렸을 때 */
+input:hover {
+    transform: scale(1.05);
+}
+
+img:hover {
+    animation: spin 0.5s linear infinite;
+
+}
+@keyframes spin {
+    to {
+        transform: rotate(320deg);
+    }
+}
+
+/* 테이블 디자인 */
+
+table {
+    width: 100%
+}
+th, td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #000;
+}
+
+thead {
+    background-color: lightgray;
+}
+
+/* 5. 우선순위 & 상속 */
+/* >p p : 자식선택자와 자손선택자는
+ 우선순위가 동일해서 나중에 선언된 스타일로 적용됨 */
+div > p {
+    color: orange;
+}
+
+div p {
+    color: darkblue;
+}
+/* 클래스 선택자는 태그 선택자 보다 우선순위(0, 1, 0)가 높음 */
+.my-text {
+    color: yellow;
+}
+/* id 선택자는 클래스 선택자보디 우선순위(1, 0, 0)가 높다. */
+#my-text {
+    color: green;
+}
+/* 태그
+클래스
+아이디
+inline style
+ */
+/* id, clas, tag던 가장 가까운 것이 먼저 적용 */
+ #parent {
+    color: blue
+ }
+
+.child {
+    color: violet;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+/* 전체 선택자 */
+* {
+    color: red;
+}
+/*  */
+/* 요소 선택자 */
+h2 {
+    color:orange;
+}
+h3 ,
+h4 {
+    color: blue;
+    font-size: 30px;
+}
+
+
