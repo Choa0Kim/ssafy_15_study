@@ -1,0 +1,30 @@
+/* font-style: 글꼴 스타일(기울기등) */
+/*font-family: 글씨체 설정  */
+body {
+  font-family: Arial, sans-serif ;
+  font-size: 16px ;
+  color: #333333 ;
+}
+/* 모든 요소를 감싸는 div 클래스 (.) */
+.container {
+  background-color: #F0F0F0 ;
+  padding: 20px;
+}
+
+.parent {
+  font-weight: bold;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+.child {
+  color: red;
+background-color: skyblue;
+padding: 10px;
+
+}
+
+.grandchild {
+  font-style: italic;
+  border: 1px dotted red ;
+}
+

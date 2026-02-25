@@ -1,0 +1,44 @@
+<!-- 
+flex
+- 가로/세로 축으로 정렬
+  - 메인축(justify)
+  - 교차축(align)
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 10px;
+      height: 10px;
+      border: 1px solid #000;
+    }
+    .my-container {
+      display: flex;
+      justify-content: space-around ;
+      justify-content:space-between;
+      order: inherit;
+      align-items:flex-end;
+      flex-direction:column-reverse;
+
+    }
+    
+
+  </style>
+</head>
+<body>
+
+  <div class="my-container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+
+</body>
+</html>

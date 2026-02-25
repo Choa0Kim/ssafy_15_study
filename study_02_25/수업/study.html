@@ -1,0 +1,51 @@
+<!-- Box model
+ - display: block
+  - 한 줄을 모두 차지(div)
+    - 가로를 지정하지 않으면 부모의 전체 너비를 차지
+    - width, height, margin, padding 모두 적용 가능
+    - 예시) div, p, section, article, header, footer 등
+
+ - display: inline
+  - 필요한 만큼만 차지(span)
+  - 좌우 margin, padding은 적용됨
+  - 상하 margin, padding  적용 X
+    - inline 요소에는 상하 margin, padding은 고려 X
+  - 예시)span, a, strong, em, img 등
+
+ - display: liline-block
+  - inline 요소인데 block처럼 쓸 수 있는 => 실무에서 많이 활용  
+ 마진상쇄: 마진이 서로 밀고있으면 하나는 상쇄됨. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model</title>
+  <style>
+    div {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #000;
+    }
+    span {
+      border: 1px solid #000;
+      margin: 20px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- block 요소: ex.div: 한줄을 다 차지함.  -->
+  <div>여기는 div 영역</div>
+  <!-- inline 요소: 필요한 만큼만 차지 X -->
+  <span>안녕하세요</span>
+  <span>안녕하세요</span>
+  
+</body>
+</html>
+
+
+
+

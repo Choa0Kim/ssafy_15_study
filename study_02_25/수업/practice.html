@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+    }
+    
+    .rel {
+      /* 원래 위치를 기준으로 왼쪽에서부터 30px이동 */
+      background-color: lightgreen;
+      position: relative;
+      left: 50px;
+      top: 50px;
+    }
+
+    .abs {
+      background-color: lightcoral;
+      position: absolute;
+      /*  가장 가까운 포지션(1번)을 기준으로 이동 */
+      left: 50px ;
+      top: 50px ;
+    }
+
+    .fix {
+      background-color: lightgray;
+      position: fixed;
+      /* 현재 위치에서 지정된 위치로 이동 후 fix */
+      bottom: 30px;
+      right: 30px;
+    }
+
+    .sti {
+      background-color: lightsalmon;
+      position: sticky;
+      top: 30px;    
+
+    }
+
+  </style>
+</head>
+<body>
+  <!-- 1번 -->
+  <div class="box"></div> 
+  <!-- 2번 -->
+  <div class="box"></div>
+  <div class="box rel"></div>
+  <div class="box abs"></div>
+  <div class="box fix"></div>
+  <div class="box sti"></div>
+  
+</body>
+</html>

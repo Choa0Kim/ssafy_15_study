@@ -1,0 +1,94 @@
+<!-- CSS position 
+  - 요소를 normal flow에서 제거하여 다른 위치로 배치하는 것
+    1. static (기본값)
+      - normal flow 그대로 배치
+    2. relative
+      - 자기 원래 위치를 기준으로 이동
+        - top, bottom, left, right로 이동을 시켜준다.
+    3. absolute
+      - 문서 흐름에서 제거
+      - normal flow에서 탈출
+      - [주의] 가장 가까운 positon: relative 부모를 기준으로 배치
+        - 없으면 body 기준
+    4. fixed
+      - 화면(viewport) 기준으로 고정
+      - 예시) 챗봇 버튼
+    5. sticky 
+      - 기본은 relative 처럼 동작
+      - 특정 위치에 도달하면 fixed 처럼 고정
+
+    -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+    }
+
+    .rel {
+      /* 원래 위치 기준으로 왼쪽에서부터 30px 이동 */
+      background-color: lightgreen;
+      position: relative;
+      left: 20px;
+
+    }
+
+    .abs {
+      background-color: lightcoral;
+      position: absolute;
+      left: 50px;
+      top: 50px;
+
+    }
+
+    .fix {
+      background-color: lightgray;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+    }
+
+    .sti {
+      background-color: lightsalmon;
+      position: sticky;
+      top: 30px;
+
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box rel"></div>
+  <div class="box abs"></div>
+  <div class="box fix"></div>
+  <div class="box sti"></div>
+
+
+  
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+
+</body>
+
+</html>
