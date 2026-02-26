@@ -1,0 +1,332 @@
+/* 기본 바디 스타일: 폰트, 배경색, 기본 텍스트 색상 설정 및 마진/패딩 제거 */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #FFF5F7 0%, #F5FFFB 100%);
+    color: #4a4a4a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 헤더 스타일: 배경색, 텍스트 색상, 패딩, 가운데 정렬 및 네비게이션과의 공간 분배 */
+header {
+    background: linear-gradient(135deg, #FFB3D9 0%, #D4B3FF 100%);
+    color: #fff;
+    padding: 1.5rem 30px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 20px rgba(255, 179, 217, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* 헤더 제목 스타일: 제목의 기본 마진 제거 */
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* 헤더 네비게이션 링크 스타일: 텍스트 색상, 밑줄 제거 및 왼쪽 마진 설정 */
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+header nav a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* 메인 콘텐츠 영역 스타일: 내부 패딩, 최대 너비, 중앙 정렬, 배경색 및 그림자 효과 */
+main {
+    padding: 40px 30px;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    background: transparent;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 각 섹션의 하단 마진 설정 */
+section {
+    margin-bottom: 0;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 40px 35px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+}
+8px;
+    margin-top: 25px;
+}
+
+/* 폼 입력 필드 및 텍스트 영역 스타일: 패딩, 테두리, 모서리 둥글게 처리 */
+form input[type="text"],
+form input[type="password"],
+form textarea {
+    padding: 14px 18px;
+    border: 2px solid #E8D4F0;
+    border-radius: 12px;
+    background-color: #FAFBFC;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    color: #4a4a4a;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #D4B3FF;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(212, 179, 255, 0.1);
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-size: 1rem;
+}
+
+/* 폼 버튼 스타일: 패딩, 배경색, 텍스트 색상, 테두리 제거, 모서리 둥글게 처리, 커서 변경 */
+form button {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #B3E5B3 0%, #A8D5BA 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(179, 229, 179, 0.3);
+}
+
+/* 폼 버튼 호버 스타일: 마우스 오버 시 배경색 변경 */
+form button:ho: linear-gradient(135deg, #F5E6FF 0%, #FFE6F0 100%);
+    border: 2px solid #E8D4F0;
+    padding: 22px 25px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#post-list div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(212, 179, 255, 0.2);
+    border-color: #D4B3FF;
+}
+
+/* 게시글 목록의 제목 스타일: 상단/하단 마진 제거, 색상 변경, 클릭 가능한 커서 */
+#post-list div h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #8B5BA8;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+#post-list div:hover h3 {
+    color: #A66FBF;
+}
+
+/* 게시글 목록의 내용 스타일: 마진 제거, 폰트 크기, 텍스트 색상 */
+#post-list div p {
+    margin: 8px 0;
+    font-size: 0.95em;
+    color: #666;
+    line-height: 1.5;
+}
+
+#post-list div small {
+    color: #999us: 4px;
+    cursor: pointer;
+}
+
+/* 폼 버튼 호버 스타일: 마우스 오버 시 배경색 변경 */
+form button:hover {
+    background-color: #4cae4c;
+}
+
+/* 게시글 목록의 각 게시글 스타일: 배경색, 테두리, 패딩, 하단 마진, 모서리 둥글게 처리 */
+#post-list div {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-rad: linear-gradient(135deg, #E6F5FF 0%, #F0E6FF 100%);
+    border: 2px solid #D4E8FF;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+}
+
+/* 댓글 목록의 내용 스타일: 마진 제거 */
+#comment-list div p {
+    margin: 6px 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+#comment-list div strong {
+    color: #725px 30px;
+    background: linear-gradient(135deg, #E8D4FF 0%, #FFD4E8 100%);
+    color: #666;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-weight: 500;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* 추가 스타일 */
+#board-section {
+    display: flex;
+    flex-direction: column;
+}
+
+#new-post-btn {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #B3D9FF 0%, #B3E5F5 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(179, 217, 255, 0.3);
+    align-self: flex-start;
+    margin-bottom: 25px;
+}
+
+#new-post-btn:hover {
+    background: linear-gradient(135deg, #A3CEFF 0%, #A3D9FF 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(179, 217, 255, 0.4);
+}
+
+#back-to-list-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #D4B3FF 0%, #B3D9FF 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(212, 179, 255, 0.3);
+    margin-top: 20px;
+}
+
+#back-to-list-btn:hover {
+    background: linear-gradient(135deg, #C8A3FF 0%, #A3CEFF 100%);
+    transform: translateY(-2px);
+}
+
+#edit-post-btn,
+#delete-post-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+#edit-post-btn {
+    background: linear-gradient(135deg, #B3E5B3 0%, #A8D5BA 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(179, 229, 179, 0.3);
+}
+
+#edit-post-btn:hover {
+    transform: translateY(-2px);
+}
+
+#delete-post-btn {
+    background: linear-gradient(135deg, #FFB3B3 0%, #FFB3D9 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 179, 179, 0.3);
+}
+
+#delete-post-btn:hover {
+    transform: translateY(-2px);
+}
+
+#cancel-post-btn,
+#cancel-edit-btn {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #D4D4D4 0%, #BFBFBF 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(180, 180, 180, 0.3);
+}
+
+#cancel-post-btn:hover,
+#cancel-edit-btn:hover {
+    background: linear-gradient(135deg, #BFBFBF 0%, #A9A9A9 100%);
+    transform: translateY(-2px)
+
+/* 게시글 목록의 내용 스타일: 마진 제거, 폰트 크기, 텍스트 색상 */
+#post-list div p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* 댓글 목록의 각 댓글 스타일: 배경색, 테두리, 패딩, 하단 마진, 모서리 둥글게 처리 */
+#comment-list div {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+/* 댓글 목록의 내용 스타일: 마진 제거 */
+#comment-list div p {
+    margin: 0;
+}
+
+/* 푸터 스타일: 텍스트 중앙 정렬, 패딩, 배경색, 텍스트 색상, 하단 고정 */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

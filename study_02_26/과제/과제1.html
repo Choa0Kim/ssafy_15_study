@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   
+    .outer-box {
+      display: flex;
+      /* inner-box에만 적용됨.(직계한테만 적용됨) */
+      justify-content: space-between;
+  
+      border: black 1px dotted ;
+      height: 200px;
+      width: 600px;
+    }
+    
+    .inner-box {
+      border: red 1px solid;
+      /* display: flex;를 해줘야 적용됨*/
+      display: flex;
+      justify-content: space-between;
+      height: 200px;
+      width: 300px;
+    }
+
+    .box {
+      height: 100px;
+      width: 100px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+<body>
+   <!-- 부모(inner의)  -->
+  <div class="outer-box">
+    <!-- 자식(outer-box의)이자 부모(box의)  -->
+    <div class="inner-box">
+      <!-- 자식(inner-box의)이자 부모(items1,2의) -->
+      <div class="box">item1</div>
+      <div class="box">item2</div>
+      <!-- items1,2는 서로 형제 -->
+    </div>
+  </div>
+</body>
+</html>
