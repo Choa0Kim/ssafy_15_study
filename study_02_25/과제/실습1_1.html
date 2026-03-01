@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 요구사항 1: h1 태그 대제목 중앙 정렬 */
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* 개별 도서 항목 스타일 */
+        .book-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px; /* 카드 사이의 간격 */
+            border: 1px solid #eee;
+        }
+
+        /* 요구사항 2: 책 제목 18px, 굵은 글씨 */
+        .book-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 10px; /* 요구사항 5: 10px 여유공간 */
+        }
+
+        /* 요구사항 3: 저자 14px */
+        .book-author {
+            font-size: 14px;
+            color: #888;
+            margin: 0;
+            margin-bottom: 10px; /* 요구사항 5: 10px 여유공간 */
+        }
+
+        /* 요구사항 4: 책 설명 14px */
+        .book-description {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>도서 관리 서비스에 오신 것을 환영합니다</h1>
+
+    <div class="container">
+        <div class="book-item">
+            <p class="book-title">도서 제목 1</p>
+            <p class="book-author">저자 1</p>
+            <p class="book-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at lacus vel neque ullamcorper tempus.</p>
+        </div>
+
+        <div class="book-item">
+            <p class="book-title">도서 제목 2</p>
+            <p class="book-author">저자 2</p>
+            <p class="book-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+        </div>
+
+        <div class="book-item">
+            <p class="book-title">도서 제목 3</p>
+            <p class="book-author">저자 3</p>
+            <p class="book-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+
+        <div class="book-item">
+            <p class="book-title">도서 제목 4</p>
+            <p class="book-author">저자 4</p>
+            <p class="book-description">Voluptas ut eum consequatur labore voluptates quaerat minima esse asperiores exercitationem?</p>
+        </div>
+    </div>
+</body>
+</html>
