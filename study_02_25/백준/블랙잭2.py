@@ -35,6 +35,7 @@ def recur(cnt, idx):
 
 
 # 초기 입력값
+# 시작조건: 카드를 하나도 뽑지 않은 상황
 recur(0, 0)
 
 print(max_total)
