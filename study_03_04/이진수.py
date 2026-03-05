@@ -26,3 +26,4 @@ print(f'#{tc} {result}')
 #   # 슬라이싱으로 제거가능
 #   # binary_val = bin(decimal_val)[2:]  
 
+
