@@ -1,0 +1,202 @@
+    /* 기본 스타일 설정 */
+    body {
+      font-family: 'Malgun Gothic', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 네비게이션 바 구현 */
+    .nav-header {
+      background-color:#00b8e6;
+      
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .nav-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #666;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: darkcyan;
+    }
+
+    .nav-links a.active {
+      color: darkcyan;
+      border-bottom: 2px solid darkcyan;
+      padding-bottom: 5px;
+    }
+
+    /* 메인 카드 레이아웃 */
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .main-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      width: 850px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      border-left: 5px solid #00b8e6;
+      padding-left: 10px;
+    }
+
+    /* 상단 레이아웃: 프로필 & 투자성향 */
+    .top-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .left-side {
+      flex: 1;
+      text-align: center;
+    }
+
+    .right-side {
+      flex: 1;
+    }
+
+    .profile-img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.2);
+      /* 그림자 속성 활용 */
+      margin-bottom: 20px;
+    }
+
+    .intro-box {
+      display: flex;
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    textarea {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      resize: none;
+      height: 50px;
+      outline: none;
+    }
+
+    .intro-update-btn {
+      background-color: #00b8e6;
+      color: white;
+      border: none;
+      padding: 0 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .option-group {
+      margin-bottom: 25px;
+    }
+
+    label {
+      margin-right: 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    /* 회원 기본 정보 섹션 */
+    .info-divider {
+      border-top: 2px dashed #eee;
+      margin: 40px 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group label {
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .info-input {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 0.95rem;
+    }
+
+    /* 편집할 수 없는 필드 */
+    .info-input[readonly] {
+      background-color: #f1f3f5;
+      color: #888;
+      cursor: not-allowed;
+    }
+
+    /* 하단 통합 수정 버튼 */
+    .submit-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .final-submit-btn {
+      background-color: #00b8e6;
+      color: white;
+      border: none;
+      padding: 15px 60px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 210, 255, 0.3);
+      transition: all 0.3s;
+    }
+
+    .final-submit-btn:hover {
+      background-color: #00b8e6;
+      transform: translateY(-2px);
+    }

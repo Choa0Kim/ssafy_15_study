@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="practice.css">
+    <title>프로필 관리 시스템</title>
+
+</head>
+<body>
+
+<header class="nav-header">
+    <h2>하치와레 님의 프로필 페이지</h2> </header>
+<nav class="nav-links">
+    <a href="#" class="active">기본 정보 수정</a> <a href="test2.html">포트폴리오 수정</a> </nav>
+
+<div class="container">
+    <div class="main-card">
+        <h1>기본 정보 수정</h1>
+
+        <div class="top-content">
+            <div class="left-side">
+                <div class="section-title">프로필 사진</div>
+                <img src="./images.jpg" alt="Profile" class="profile-img">
+                
+                <div class="section-title">자기 소개</div>
+                <div class="intro-box">
+                    <textarea placeholder="안녕하세요. 저는 부자가 되고 싶습니다."></textarea>
+                    <button class="intro-update-btn">Update</button>
+                </div>
+            </div>
+
+            <div class="right-side">
+                <div class="option-group">
+                    <div class="section-title">투자상품 선호도</div>
+                    <input type="checkbox" id="c1"> <label for="c1">주식</label>
+                    <input type="checkbox" id="c2"> <label for="c2">채권</label>
+                    <input type="checkbox" id="c3" checked> <label for="c3">부동산</label>
+                    <input type="checkbox" id="c4" checked> <label for="c4">가상 화폐</label>
+                </div>
+
+                <div class="option-group">
+                    <div class="section-title">투자 스타일</div>
+                    <input type="radio" name="style" id="r1"> <label for="r1">안정적</label>
+                    <input type="radio" name="style" id="r2"> <label for="r2">중립적</label>
+                    <input type="radio" name="style" id="r3" checked> <label for="r3">공격적</label>
+                </div>
+
+                <div class="option-group">
+                    <div class="section-title">관심 종목</div>
+                    <input type="checkbox" id="i1"> <label for="i1">정보기술</label>
+                    <input type="checkbox" id="i2" checked> <label for="i2">소비재</label>
+                    <input type="checkbox" id="i3" checked> <label for="i3">금융</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-divider"></div>
+
+        <div class="section-title" style="margin-bottom: 25px;">회원 기본 정보</div>
+        <form class="info-grid">
+            <div class="input-group">
+                <label>회원 번호</label>
+                <input type="text" class="info-input" value="001" readonly>
+            </div>
+            <div class="input-group">
+                <label>ID</label>
+                <input type="text" class="info-input" value="user_id" readonly>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" class="info-input" placeholder="example@email.com" required>
+            </div>
+            <div class="input-group">
+                <label>Nickname</label>
+                <input type="text" class="info-input" placeholder="닉네임 입력">
+            </div>
+            <div class="input-group">
+                <label>나이</label>
+                <input type="number" class="info-input" placeholder="숫자만 입력">
+            </div>
+            <div class="input-group">
+                <label>자산 (단위: 만원)</label>
+                <input type="number" class="info-input" placeholder="숫자만 입력">
+            </div>
+            <div class="input-group" style="grid-column: span 2;">
+                <label>연봉 (단위: 만원)</label>
+                <input type="number" class="info-input" placeholder="숫자만 입력">
+            </div>
+
+            <div class="submit-container" style="grid-column: span 2;">
+                <button type="submit" class="final-submit-btn">정보 수정 완료</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
