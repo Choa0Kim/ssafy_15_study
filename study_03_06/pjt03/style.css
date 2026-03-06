@@ -1,0 +1,229 @@
+/* 기본 스타일 설정 */
+body {
+  font-family: 'Malgun Gothic', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* 네비게이션 바 구현 */
+.nav-header {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  position: relative; /* 홈 버튼 배치를 위한 기준점 설정 */
+}
+
+/* [핵심 수정] 홈 버튼을 더 위로 올림 */
+.home-btn {
+    position: absolute;
+    /* [핵심] 수치를 10px로 낮춰서 위로 바짝 올립니다 */
+    top: 10px !important;      
+    right: 20px;
+    
+    background-color: white !important;
+    color: #007bff !important; /* 아이콘과 글자색을 파란색으로 */
+    border: none;
+    padding: 5px 15px !important;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 아이콘 크기 미세 조정 */
+.home-btn i {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.home-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 7px rgba(0,0,0,0.15) !important;
+}
+
+.nav-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #666;
+  margin: 0 20px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover { color: darkcyan; }
+.nav-links a.active {
+  color: darkcyan;
+  border-bottom: 2px solid darkcyan;
+  padding-bottom: 5px;
+}
+
+/* 메인 카드 레이아웃 */
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.main-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  max-width: 850px;
+  width: 100%;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  border-left: 5px solid #007bff;
+  padding-left: 10px;
+}
+
+/* 상단 레이아웃: 프로필 & 투자성향 */
+.top-content {
+  margin-bottom: 50px;
+}
+
+.left-side {
+  text-align: center;
+  padding: 15px;
+}
+
+.right-side {
+  padding: 15px;
+}
+
+.profile-img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.intro-box {
+  display: flex;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+textarea {
+  flex: 1;
+  border: none;
+  padding: 15px;      
+  resize: vertical;   
+  height: 120px;      
+  outline: none;
+  font-size: 0.95rem; 
+  line-height: 1.6;   
+}
+
+/* [추가] 입력창이 커진 만큼 Update 버튼도 중앙에 오도록 조정 */
+.intro-box {
+  display: flex;
+  align-items: stretch; /* 버튼이 입력창 높이에 맞춰지도록 설정 */
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.intro-update-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.option-group { margin-bottom: 25px; }
+label { margin-right: 12px; cursor: pointer; font-size: 0.9rem; }
+
+/* 회원 기본 정보 섹션 */
+.info-divider {
+  border-top: 2px dashed #eee;
+  margin: 40px 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* 반응형 레이아웃 */
+@media (max-width: 768px) {
+  .main-card { padding: 20px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .input-group[style*="grid-column: span 2"] { grid-column: span 1 !important; }
+  .right-side { margin-top: 20px; }
+  .profile-img { width: 180px; height: 180px; }
+  /* 모바일에서 홈 버튼 위치 미세 조정 */
+  .home-btn { top: 10px !important; } 
+}
+
+.input-group { display: flex; flex-direction: column; }
+.input-group label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.info-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  
+}
+
+.info-input[readonly] {
+  background-color: #f1f3f5;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.submit-container { text-align: center; margin-top: 40px; }
+.final-submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px 60px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 184, 230, 0.3);
+  transition: all 0.3s;
+}
+
+.final-submit-btn:hover {
+  background-color: #007bff;
+  transform: translateY(-2px);
+}
