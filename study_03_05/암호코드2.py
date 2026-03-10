@@ -1,90 +1,98 @@
 import sys 
-sys.stdin = open("input3.txt", "r")
+sys.stdin = open("input.txt", "r")
 
-# T = int(input())
-# for tc in (1, 1+T):
-# code = ""  
-N, M = map(int, input().split())
-# 중복이 없는 줄 담는 딕셔너리
-unique_code = set()
-# 0만 있는 행 무시하기
-for _ in range(N):
-  strr = input().strip()
-  # 양 옆에서 0을 지웠을때, 빈문자열이 있는지 확인 => 유효한 암호가 있는 줄  
-  if strr.strip('0'):
-    # 그 줄은 딕셔너리에 담기
-    unique_code.add(strr)
+T = int(input())
 
-# 딕셔너리를 리스트로 바꾸기
-unique_list = list(unique_code)
+for tc in range(1, 1+T):
+# code = "" 
+  
+  N, M = map(int, input().split())
+  # 중복이 없는 줄 담는 딕셔너리
+  unique_code = set()
+  # 0만 있는 행 무시하기
+  for _ in range(N):
+    strr = input().strip()
+    # 양 옆에서 0을 지웠을때, 빈문자열이 있는지 확인 => 유효한 암호가 있는 줄  
+    if strr.strip('0'):
+      # 그 줄은 딕셔너리에 담기
+      unique_code.add(strr)
 
-# unique_code에 들어있는 줄을 2진수로 변환
-for hex_row in unique_list:
-  binary_row = ""
-  for char in hex_row:
-    binary_row += format(int(char, 16), '04b')
+  # 딕셔너리를 리스트로 바꾸기
+  unique_list = list(unique_code)
 
-# binary_list = list(binary_row)
-# print(binary_list)
+  visited_codes = set()
+  total_ans = 0
 
+  # unique_code에 들어있는 줄을 2진수로 변환
+  for hex_row in unique_list:
+    binary_row = ""
+    for char in hex_row:
+      binary_row += format(int(char, 16), '04b')
 
-# 암호 비율 딕셔너리
-ratio_map = {
-    (3, 2, 1, 1): 0, (2, 2, 2, 1): 1, (2, 1, 2, 2): 2, (1, 4, 1, 1): 3,
-    (1, 1, 3, 2): 4, (1, 2, 3, 1): 5, (1, 1, 1, 4): 6, (3, 1, 2): 7,
-    (2, 1, 3): 8, (3, 1, 1, 2): 9
-}
-# c1:c2:c3:c4
-i = len(binary_row) -1
-while i >= 55:
-  if binary_row[i] == '1':
-    # 8개 코드 담는 리스트
-    code_list = []
-
-    # 3개의 비율만 고려하는 이유
-    # c1 앞에 무의미한 0이 까려 있음. while문으로 갯수를 세면. 무의미한 0까지 세어짐.
-    #
-    for _ in range(8):
-      c2 = c3 = c4 = 0
-      # (c4=> 1갯수세기)
-      while binary_row[i] == '1': c4 += 1; i -= 1
-      # (c3=> 0 갯수세기)
-      while binary_row[i] == '0' : c3 += 1; i -= 1
-      # (c2=> 0 갯수세기)
-      while binary_row[i] == '1' : c2 += 1; i -= 1
+  # binary_list = list(binary_row)
+  # print(binary_list)
 
 
-      # 갯수 센 것들 비율 확인
-      K = min(c2, c3, c4)
+  # 암호 비율 딕셔너리
+  ratio_map = {
+      (3, 2, 1, 1): 0, (2, 2, 2, 1): 1, (2, 1, 2, 2): 2, (1, 4, 1, 1): 3,
+      (1, 1, 3, 2): 4, (1, 2, 3, 1): 5, (1, 1, 1, 4): 6, (1, 3, 1, 2): 7,
+      (1, 2, 1, 3): 8, (3, 1, 1, 2): 9
+  }
+  # c1:c2:c3:c4
+  i = len(binary_row) -1
+  while i >= 55:
+    if binary_row[i] == '1':
+      # 8개 코드 담는 리스트
+      code_list = []
 
-      # c1 계산
-      c1 = (7*K)- (c2+c3+c4)
-      # c1:c2:c3:c4 비율 맞추기
-      a = (c1//K, c2//K, c3//K, c4//K)
-      b = ratio_map[a]
-      code_list.append(b)
-      print(code_list)
+      # 3개의 비율만 고려하는 이유
+      # c1 앞에 무의미한 0이 까려 있음. while문으로 갯수를 세면. 무의미한 0까지 세어짐.
+      #
+      for _ in range(8):
+        c2 = c3 = c4 = 0
+        # (c4=> 1갯수세기)
+        while binary_row[i] == '1': c4 += 1; i -= 1
+        # (c3=> 0 갯수세기)
+        while binary_row[i] == '0' : c3 += 1; i -= 1
+        # (c2=> 0 갯수세기)
+        while binary_row[i] == '1' : c2 += 1; i -= 1
 
-      i -= c1
 
-      # for k in range(0, 56, 7):
-        
+        # 갯수 센 것들 비율 확인
+        K = min(c2, c3, c4)
+
+        # c1 계산
+        c1 = (7*K)- (c2+c3+c4)
+        # c1:c2:c3:c4 비율 맞추기
+        a = (c1//K, c2//K, c3//K, c4//K)
+        code_list.append(ratio_map[a])
+
+        # c1 만큼 i를 왼쪽으로 이동
+
+        i -= c1
+      # 순서 원래대로
+      code_list.reverse()
+
+      #검증 
+      # 이미 찾은 암호인지 중복체크
+      code_tuple = tuple(code_list)
+      if code_tuple not in visited_codes:
+        odd_sum = code_list[0] + code_list[2] + code_list[4] + code_list[6]
+        even_sum = code_list[1] + code_list[3] + code_list[5] + code_list[7]
+
+        if (odd_sum * 3 + even_sum) % 10 == 0:
+              total_ans += sum(code_list)
+              
+        visited_codes.add(tuple(code_list))
+              
       
-      
+  
 
+    else:
+      i -= 1
 
-      
-
-
-      
-      
-    
-    result = binary_row[i-55:i+1]
-
-  else:
-    i -= 1
-
-print(result)
+  print(f'#{tc} {total_ans}')
 
     
 # print(binary_row)
@@ -92,15 +100,6 @@ print(result)
 # # 뒤에서 부터 확인하면서 1로 시작하는지 확인.
 # for i in range(M-1, -1, -1):
 #   if 
-
-
-
-
-
-
-
-
-
 
 
 # 1. 0만 있는 행은 무시한다
