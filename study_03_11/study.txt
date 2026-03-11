@@ -1,0 +1,7 @@
+1. 병합 / 퀵 정렬
+- 그림 그려보기
+
+2. 이진 검색
+- 기본 이진 검색
+- lower bound / upper bound
+- parametric search
